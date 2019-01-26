@@ -1,35 +1,26 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Digit Predict</title>
+    <title>TEST POST</title>
     <script type="text/javascript" id="Button2">
-    function save (){
+    function save(){
         $.ajax({
-            //画像処理サーバーに返す場合
-            url: 'http://127.0.0.1:8000/',
+            url: '/',
             type: 'POST',
             contentType: 'application/json',
-            dataType:"json",
-            data : {post_data_1:"hoge", post_data_2:"piyo"},
+            dataType:'json',
+            data : {post_data: "hoge"},
         });
     }
     </script>
 </head>
 <body>
-<div class="container">
-    <div class="block">
-        <div class="block__element">
-            <form action="" method="post">
-                {% csrf_token %}
-                <button id="Button2" onclick="save()">Draw Canvas #2</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<p>{{ img }}</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button id="Button2" onclick="save()">POST</button>
+        <input type="hidden" name="img" value="XXX">
+    </form>
+    <p>{{ img }}</p>
 </body>
 </html>
