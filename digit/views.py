@@ -14,11 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def index(request):
     if request.method == 'POST':
-        #data = request.POST['data']
-        #if data:
-        #    val = 1
-        #else:
-        #    val = 0
+
+        data = request.POST['img']
+        if data:
+            val = 1
+        else:
+            val = 0
+
         #image_width = int(request.POST['width'])
         #image_height = int(request.POST['height'])
         #image_data = re.sub("^data:image/png;base64,", "", image_data)
@@ -27,6 +29,6 @@ def index(request):
         #im = Image.open(image_data)
 
         # return HttpResponseRedirect('/', {'img': 'val'})
-        return render(request, 'digit/index.html',  {'img': '000000'})
+        return render(request, 'digit/index.html',  {'img': val})
     else:
         return render(request, 'digit/index.html', {})
