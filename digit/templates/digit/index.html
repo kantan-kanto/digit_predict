@@ -41,17 +41,9 @@
             //画像処理サーバーに返す場合
             url: 'http://127.0.0.1:8000/',
             type: 'POST',
-            Content-Type: 'application/x-www-form-urlencoded';
-            data: fData,
-            processData: false,
-            success: function(data, dataType) {
-                //非同期で通信成功時に読み出される [200 OK 時]
-                console.log('Success', data);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                //非同期で通信失敗時に読み出される
-                console.log('Error : ' + errorThrown);
-            }
+            contentType: 'application/json',
+            dataType:"json",
+            data : {post_data_1:"hoge", post_data_2:"piyo"},
         });
     }
     </script>

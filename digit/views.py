@@ -15,7 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     if request.method == 'POST':
 
-        data = request.POST['img']
+        data = request.POST['post_data_1']
         if data:
             val = 1
         else:
