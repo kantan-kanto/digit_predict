@@ -5,38 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Digit Predict</title>
-    <link rel="stylesheet" href="{% static 'css/digit.css' %}">
-    <script type="text/javascript" src="{% static 'js/paper-full.js' %}"></script>
-    <script type="text/paperscript" src="{% static 'js/canvas.js' %}" canvas="canvas1"></script>
-    <script type="text/javascript" id="Button1">
-    function imageCapture(){
-        var thisImage = document.getElementById("canvas1").toDataURL("image/png");
-        (thisImage).submit();
-
-        // these two lines create an Image Object and load it with what/s on the canvas
-        // var thisImage = new Image();
-        // thisImage = document.getElementById("canvas1").toDataURL("image/png");
-        // var thisImage = document.getElementById(thisCanvas).toDataURL('image/png');
-        // http://www.html5.jp/canvas/ref/HTMLCanvasElement/toDataURL.html
-
-        // This line grabs the blank image element we had waiting for us in the HTML
-        // var imageTarget = document.getElementById('newImage');
-        // and this line assigns a new src to it (the src is located in the Javascript as an Object
-        // once the src is assigned, the image loads
-        // imageTarget.src = thisImage;
-
-        // and then, these two lines do the same thing, except exporting the Object as text
-        // var textTarget = document.getElementById('newDiv');
-        // textTarget.innerHTML = thisImage;
-        // innerHTMLというプロパティを使用すれば、要素の中身を変更する事が出来ます。
-    }
-    </script>
     <script type="text/javascript" id="Button2">
     function save (){
-        var thisImage = document.getElementById("canvas1").toDataURL("image/png");
-        var fData = new FormData()
-        fData.append('img', thisImage);
-
         $.ajax({
             //画像処理サーバーに返す場合
             url: 'http://127.0.0.1:8000/',
@@ -53,18 +23,13 @@
     <div class="block">
         <div class="block__element">
             <form action="" method="post">
-                <canvas id="canvas1" width="250" height="250" style="background:#EFECE5"></canvas>
                 {% csrf_token %}
-                <button id="Button1" onclick="imageCapture()">Draw Canvas #1</button>
                 <button id="Button2" onclick="save()">Draw Canvas #2</button>
-                <input type="hidden" name="image_data" value="">
             </form>
         </div>
     </div>
 </div>
 
-<p><img id="newImage"></p>
-<div id="newDiv"></div>
 <p>{{ img }}</p>
 </body>
 </html>
