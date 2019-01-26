@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Digit Predict</title>
+    <link rel="stylesheet" href="{% static 'css/digit.css' %}">
+    <script type="text/javascript" src="{% static 'js/paper-full.js' %}"></script>
+    <script type="text/javascript" id="Button1">
+    function imageCapture(thisCanvas){
+        // these two lines create an Image Object and load it with what/s on the canvas
+        var thisImage = new Image();
+        thisImage = document.getElementById(thisCanvas).toDataURL("image/png");
+        // var thisImage = document.getElementById(thisCanvas).toDataURL('image/png');
+
+        // This line grabs the blank image element we had waiting for us in the HTML
+        var imageTarget = document.getElementById('newImage');
+        // and this line assigns a new src to it (the src is located in the Javascript as an Object
+        // once the src is assigned, the image loads
+        imageTarget.src = thisImage;
+
+        // and then, these two lines do the same thing, except exporting the Object as text
+        var textTarget = document.getElementById('newDiv');
+        textTarget.innerHTML = thisImage;
+    }
+    </script>
+    <script type="text/javascript" id="Button2">
+    function submit_pixels(canvas) {
+        $('form input[name=image_data]').val(canvas.toDataURL("image/png"));
+        $('form').submit();
+    }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="block">
+        <div class="block__element">
+            <form action="" method="post">
+                <canvas id="canvas1" width="250" height="250" style="background:#EFECE5"></canvas>
+                {% csrf_token %}
+                <button id="Button1" onclick="imageCapture('canvas1')">Draw Canvas #1</button>
+                <button id="Button2" onclick="submit_pixels('canvas1')">Draw Canvas #2</button>
+                <input type="hidden" name="image_data" value="">
+            </form>
+        </div>
+    </div>
+</div>
+
+<p>{{ img }}</p>
+<p><img id="newImage"></p>
+<div id="newDiv"></div>
+</body>
+</html>
