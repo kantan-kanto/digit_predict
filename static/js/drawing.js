@@ -9,12 +9,13 @@ window.addEventListener("load", init, false);
 function init(ev) {
     cvs = document.getElementById("canvas1");
     ctx = cvs.getContext("2d");
-    ctx.lineWidth = 2;
-    ctx.fillStype = "#000000";
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+    ctx.lineWidth = 5;
+    ctx.fillStype = "#3f3f3f";
     cvs.addEventListener("mousedown", start, false);
     cvs.addEventListener("mousemove", move, false);
     cvs.addEventListener("mouseup", stop, false);
-    document.getElementById("button1").value = document.getElementById("canvas1").toDataURL("image/png")
 }
 function start(ev) {
     x = ev.layerX;

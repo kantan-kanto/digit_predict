@@ -4,18 +4,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Digit Predict</title>
+    <title>Read Digit</title>
     <script type="text/javascript" src="{% static 'js/drawing.js' %}"></script>
+    <script type="text/javascript" id="button2">
+    function() {
+        document.getElementById("button1").value =  document.getElementById("canvas1").toDataURL("image/png");
+    }
+    </script>
 </head>
 
 <body>
 <canvas id="canvas1" width="250" height="250" style="background:#EFECE5"></canvas>
 <form action="" method="post">
     {% csrf_token %}
-    <button>Save Canvas #1</button>
+    <button id="button2" onclick="function()">Read digit</button>
     <input id="button1" type="hidden" name="img">
 </form>
 
-<p>{{ img }}</p>
+<p>Your writing digit may be ...
+    <h3>{{ img }}</h3>
+</p>
 </body>
 </html>
