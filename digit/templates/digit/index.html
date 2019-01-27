@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Read Digit</title>
+    <title>Read Number</title>
     <script type="text/javascript" src="{% static 'js/drawing_touch.js' %}"></script>
 </head>
 
@@ -12,9 +12,9 @@
 <canvas id="canvas1" width="250" height="250" style="background:#EFECE5"></canvas>
 <form action="" method="post">
     {% csrf_token %}
-    <button>Read digit</button>
+    <button style="WIDTH:250px;HEIGHT:40px;font-size:20px;border:none;background:#e7e7e7;color:##3f3f3f;">Written number may be...</button>
     <input id="button1" type="hidden" name="img">
 </form>
-<p>Your writing digit may be ...</p><h3>{{ img }}</h3>
+<h1>{{ img }}</h1>
 </body>
 </html>

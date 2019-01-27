@@ -6,19 +6,6 @@ from io import BytesIO
 from digit.twolayernet import TwoLayerNet
 
 
-def img_prp():
-    img = Image.open('digit/img_l/' + str(np.random.randint(9)) + '.png')
-    img_S = img.resize((28, 28))
-    im = np.array(img_S)
-    im_r, im_g, im_b = im[:, :, 0], im[:, :, 1], im[:, :, 2]
-    im_L = (0.298912 * im_r + 0.586611 * im_g + 0.114478 * im_b)
-    if np.sum(im_L) / np.size(im_L) > 100:
-        im_LN = 1 - im_L.reshape(1, -1) / 255
-    else:
-        im_LN = im_L.reshape(1, -1) / 255
-    return im_LN
-
-
 def img_prp2(data):
     encoded_image = data.split(",")[1]
     decoded_image = base64.b64decode(encoded_image)
