@@ -25,14 +25,12 @@ def img_prp2(data):
     img = Image.open(BytesIO(decoded_image))
     img_S = img.resize((28, 28))
     im = np.array(img_S)
-    im_r, im_g, im_b = im[:, :, 0], im[:, :, 1], im[:, :, 2]
-    im_L = (0.298912 * im_r + 0.586611 * im_g + 0.114478 * im_b)
+    im_L = im[:, :, 3]
     if np.sum(im_L) / np.size(im_L) > 100:
         im_LN = 1 - im_L.reshape(1, -1) / 255
     else:
         im_LN = im_L.reshape(1, -1) / 255
-    # return im_LN
-    return img_S
+    return im_LN
 
 
 def answer(x):
