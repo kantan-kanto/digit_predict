@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from digit.predict import img_prp2, answer
+from digit.dnn.predict import img_prp, answer
+from digit.cnn.predict import img_prp_cnn, answer_cnn
 
 
 def index(request):
@@ -7,7 +8,7 @@ def index(request):
         data = request.POST['img']
         if data:
             val = data
-            val = img_prp2(val)
+            val = img_prp(val)
             val = answer(val)
             val = str(val).replace('[', '').replace(']', '')
         else:
@@ -15,3 +16,18 @@ def index(request):
         return render(request, 'digit/index.html',  {'img': val})
     else:
         return render(request, 'digit/index.html', {})
+
+
+def index_cnn(request):
+    if request.method == 'POST':
+        data = request.POST['img']
+        if data:
+            val = data
+            val = img_prp_cnn(val)
+            val = answer_cnn(val)
+            val = str(val).replace('[', '').replace(']', '')
+        else:
+            val = "No data"
+        return render(request, 'digit/index_cnn.html',  {'img': val})
+    else:
+        return render(request, 'digit/index_cnn.html', {})

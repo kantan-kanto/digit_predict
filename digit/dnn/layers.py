@@ -1,5 +1,5 @@
 import numpy as np
-from digit.functions import softmax, cross_entropy_error
+from digit.dnn.functions import softmax, cross_entropy_error
 
 
 class MulLayer:

@@ -3,10 +3,10 @@ import pickle
 from PIL import Image
 import base64
 from io import BytesIO
-from digit.twolayernet import TwoLayerNet
+from digit.dnn.twolayernet import TwoLayerNet
 
 
-def img_prp2(data):
+def img_prp(data):
     encoded_image = data.split(",")[1]
     decoded_image = base64.b64decode(encoded_image)
     img = Image.open(BytesIO(decoded_image))
@@ -21,7 +21,7 @@ def img_prp2(data):
 
 
 def answer(x):
-    with open("digit/0_9642.pkl", 'rb') as f:
+    with open("digit/dnn/0_9642.pkl", 'rb') as f:
         params = pickle.load(f)
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10, params=params, dropout_ratio=0)
 
