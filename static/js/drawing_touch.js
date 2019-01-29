@@ -18,8 +18,9 @@ function init(ev) {
     ctx = cvs.getContext("2d");
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
-    ctx.lineWidth = 15;
-    ctx.fillStype = "#3f3f3f";
+    ctx.lineWidth = cvssize * 0.03;
+    ctx.shadowBlur = cvssize * 0.03;
+    ctx.shadowColor = 'rgb(0, 0, 0)';
     cvs.addEventListener("mousedown", start, false);
     cvs.addEventListener("mousemove", move, false);
     cvs.addEventListener("mouseup", stop, false);
