@@ -8,6 +8,13 @@ window.addEventListener("load", init, false);
 
 function init(ev) {
     cvs = document.getElementById("canvas1");
+    function fitCanvasSize() {
+        cvssize = Math.min(document.documentElement.clientWidth,document.documentElement.clientHeight-100)-30;
+        cvs.width = cvssize;
+        cvs.height = cvssize;
+    }
+    fitCanvasSize();
+    window.onresize = fitCanvasSize;
     ctx = cvs.getContext("2d");
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
@@ -38,7 +45,8 @@ function move(ev) {
 function stop(ev) {
     ctx.closePath();
     drawing = false;
-    document.getElementById("button1").value = cvs.toDataURL("image/png");
+    document.getElementById("button1").value = cvssize;
+    document.getElementById("button2").value = cvs.toDataURL("image/png");
 }
 function start_touch(ev) {
     x = ev.changedTouches[0].pageX;
@@ -58,5 +66,6 @@ function move_touch(ev) {
 function stop_touch(ev) {
     ctx.closePath();
     drawing = false;
-    document.getElementById("button1").value = cvs.toDataURL("image/png");
+    document.getElementById("button1").value = cvssize;
+    document.getElementById("button2").value = cvs.toDataURL("image/png");
 }
