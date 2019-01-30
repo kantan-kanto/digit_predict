@@ -29,3 +29,14 @@ def answer(x):
     answer = np.argmax(answer, axis=1)
 
     return answer
+
+
+def pb_dnn(x):
+    with open("digit/dnn/0_9642.pkl", 'rb') as f:
+        params = pickle.load(f)
+    network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10, params=params, dropout_ratio=0)
+
+    answer = network.predict(x)
+    # answer = np.argmax(answer, axis=1)
+
+    return answer

@@ -30,3 +30,15 @@ def answer_cnn(x):
     answer = np.argmax(answer, axis=1)
 
     return answer
+
+
+def pb_cnn(x):
+    with open("digit/cnn/0_9631.pkl", 'rb') as f:
+        params = pickle.load(f)
+
+    network = SimpleCNN(params=params)
+
+    answer = network.predict(x)
+    # answer = np.argmax(answer, axis=1)
+
+    return answer

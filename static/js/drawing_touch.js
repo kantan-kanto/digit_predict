@@ -9,7 +9,7 @@ window.addEventListener("load", init, false);
 function init(ev) {
     cvs = document.getElementById("canvas1");
     function fitCanvasSize() {
-        cvssize = Math.min(document.documentElement.clientWidth,document.documentElement.clientHeight-100)-30;
+        cvssize = Math.min(document.documentElement.clientWidth,document.documentElement.clientHeight-100);
         cvs.width = cvssize;
         cvs.height = cvssize;
     }
@@ -18,8 +18,8 @@ function init(ev) {
     ctx = cvs.getContext("2d");
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
-    ctx.lineWidth = cvssize * 0.03;
-    ctx.shadowBlur = cvssize * 0.03;
+    ctx.lineWidth = cvssize * 0.04;
+    ctx.shadowBlur = cvssize * 0.04;
     ctx.shadowColor = 'rgb(0, 0, 0)';
     cvs.addEventListener("mousedown", start, false);
     cvs.addEventListener("mousemove", move, false);
