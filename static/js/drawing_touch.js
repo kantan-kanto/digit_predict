@@ -9,7 +9,7 @@ window.addEventListener("load", init, false);
 function init(ev) {
     cvs = document.getElementById("canvas1");
     function fitCanvasSize() {
-        cvssize = Math.min(document.documentElement.clientWidth,document.documentElement.clientHeight-100);
+        cvssize = Math.min(document.documentElement.clientWidth,document.documentElement.clientHeight-200);
         cvs.width = cvssize;
         cvs.height = cvssize;
     }
